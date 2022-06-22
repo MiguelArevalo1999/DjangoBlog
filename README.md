@@ -1,0 +1,1 @@
+Blog en Django por Miguel Arévalo
