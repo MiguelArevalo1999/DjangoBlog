@@ -3,7 +3,7 @@ from unicodedata import category
 from django.shortcuts import render, get_object_or_404
 from django.urls import  reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Category, Comment, Post
+from .models import Category, Comment, Post, Profile
 from .forms import CommentForm, EditForm, PostForm
 from django.http import HttpResponseRedirect
 # def home(request):
@@ -95,3 +95,6 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy('home')
+
+def AboutMeView(request):
+    return render(request, 'about_me.html')
