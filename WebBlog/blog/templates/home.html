@@ -1,27 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
   
 <h1>Posts</h1>
 
-<ul>
-{% for post in object_list %}
-    <li><a href="{% url 'article-detail' post.pk %}">{{ post.title }} </a> 
-        - <a href="{% url 'category' post.category|slugify %}"> {{ post.category }}</a>
-        - {{ post.author.first_name }}
-          {{ post.author.last_name }} - {{ post.post_date }} 
-    
-    {% if user.is_authenticated %}
-        {% if user.id == post.author.id %}
-            - <small><a href="{% url 'update_post' post.pk %}">(Edit)</a>
-            <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
-        {% endif %}
-    {% endif %}
 
-    </small><br>
-    {{ post.snippet }}
-    </li>
+{% for post in object_list %}
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        {% if post.author.profile.profile_pic %}
+        <img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
+        {% else %}
+        <img src="{% static 'blog/images/userGeneric.png' %}" class="card-img" >
+        {% endif %}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <a href="{% url 'article-detail' post.pk %}" class="text-decoration-none"><h5 class="card-title">{{ post.title }}</h5></a>
+          <p class="card-text">{{ post.snippet }}</p>
+          <p class="card-text"><small class="text-muted">{{ post.author.first_name }}
+            {{ post.author.last_name }} - {{ post.post_date }}</small></p><br><br><br><br>
+            {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
+                <a href="{% url 'update_post' post.pk %}" class="text-decoration-none"><button type="button" class="btn btn-outline-success">Edit</button></a>
+                <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none"><button type="button" class="btn btn-outline-danger">Delete</button></a>
+                {% endif %}
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 
 {% endfor %}
-</ul>
 
 {% endblock %}

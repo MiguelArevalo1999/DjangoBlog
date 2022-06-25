@@ -7,15 +7,14 @@
 {% block content %}
 
 <h1>{{ post.title }}</h1>
-<small>By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }}
+<small>By: {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }}</small>
     {% if user.is_authenticated %}
         {% if user.id == post.author.id %}
-        - <a href="{% url 'update_post' post.pk %}">(Edit)</a>
-
-        <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+        <a href="{% url 'update_post' post.pk %}" class="text-decoration-none"><button type="button" class="btn btn-outline-success btn-sm">Edit</button></a>
+        <a href="{% url 'delete_post' post.pk %}" class="text-decoration-none"><button type="button" class="btn btn-outline-danger btn-sm">Delete</button></a>
         {% endif %}
     {% endif %}
-</small><br>
+<br>
 <hr>
 <br>
 {% if post.header_image %}
@@ -42,7 +41,8 @@
 
     <small><a href="{% url 'login' %}">Login to like</a></small>
     {% endif %}
-    -{{ total_likes}} Likes
+    {{ total_likes}} Likes
+    
 </form>
 <hr>
 
