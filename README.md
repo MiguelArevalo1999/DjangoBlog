@@ -1,12 +1,11 @@
 # WebBlog
 ## Autor: Eduardo Granados
-
-
-
+## Video
+Link a video
 Aplicación web similar a un blog post implementada con Python y Django.
 Elaboré e implementé todo el proyecto con ayuda y guía de la documentación de Django y Python.
 
-## Installation
+## Instalación
 - Instalar las dependencias del proyecto
 ```
 pip install -r requirements.txt
