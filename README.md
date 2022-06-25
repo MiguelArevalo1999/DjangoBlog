@@ -1,5 +1,5 @@
 # WebBlog
-## Autor: Miguel Arévalo
+## Autor: Eduardo Granados
 
 
 
