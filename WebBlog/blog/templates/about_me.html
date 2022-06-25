@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  
+<h1>About me</h1><br>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+    <img src="{% static 'blog/images/about_me_image.jpg' %}" class="card-img" >
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">
+            Eduardo Javier Granados Sánchez
+        </h5>
+          <p class="card-text">Mi nombre es Eduardo Javier Granados Sánchez. Tengo 28 años. Soy ingeniero mecánico. 
+            Me gusta tocar la guitarra, el contrabajo y hacer ejercicio en mis ratos libres.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
