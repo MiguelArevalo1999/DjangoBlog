@@ -28,7 +28,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {% for item in cat_menu%}
                   <a class="dropdown-item" href="{% url 'category' item|slugify %}">{{ item }}</a> 
-                  {% endfor%} 
+                  {% endfor %} 
                 </ul>
               </li>
               {% else %}
@@ -47,10 +47,21 @@
                 <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
               </li>  
               
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
-              </li> 
-
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profile
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Settings</a>
+                  {% if user.profile.id %}
+                    <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile Page</a>
+                    <a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id %}">View Profile Page</a>
+                  {% else %}
+                    <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile Page</a>
+                  {% endif %}
+                  
+                </ul>
+              </li>
               
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'logout' %}">Logout</a>

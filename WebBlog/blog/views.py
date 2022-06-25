@@ -3,8 +3,8 @@ from unicodedata import category
 from django.shortcuts import render, get_object_or_404
 from django.urls import  reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Category, Post
-from .forms import EditForm, PostForm
+from .models import Category, Comment, Post
+from .forms import CommentForm, EditForm, PostForm
 from django.http import HttpResponseRedirect
 # def home(request):
 #     return render(request, 'home.html', {})
@@ -67,6 +67,17 @@ class AddPostView(CreateView):
     template_name = 'add_post.html'
     #fields = '__all__'
     #fields = ('title','body')
+
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'add_comment.html'
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
+    
 
 class AddCategoryView(CreateView):
     model = Category

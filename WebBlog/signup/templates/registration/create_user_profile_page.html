@@ -1,26 +1,19 @@
 {% extends 'base.html' %}
-{% block title %} Create a new Blog post {% endblock %}
+{% block title %} Create a new Profile Page {% endblock %}
 {% block content %}
 
 {% if user.is_authenticated %}
-    <h1>Add post...</h1>
+    <h1>Create Profile Page...</h1>
     <br><br>
 
     <div class="form-group">
         <form method ="post", enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.media }}
             {{ form.as_p }}
-            <button class="btn btn-secondary">Post</button>
+            <button class="btn btn-secondary">Create Profile Page</button>
 
         </form>
     </div>
-
-    <script>
-        var name = "{{ user.id }}";
-        document.getElementById("username").value
-                = name;
-    </script> 
 
 
 {% else %}
