@@ -1,12 +1,9 @@
 # WebBlog
-## Autor: Eduardo Granados
+## Autor: Miguel Arévalo
 
 Aplicación web similar a un blog post implementada con Python y Django.
 Elaboré e implementé todo el proyecto con ayuda y guía de la documentación de Django y Python.
-## Video
-```
-Link a video
-```
+
 ## Instalación
 - Instalar las dependencias del proyecto
 ```
