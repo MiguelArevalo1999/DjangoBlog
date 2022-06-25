@@ -8,11 +8,18 @@ Elaboré e implementé todo el proyecto con ayuda y guía de la documentación d
 
 ## Installation
 - Instalar las dependencias del proyecto
+```
 pip install -r requirements.txt
+```
 
 - Crear base de datos a partir de las migraciones
 ```
+python manage.py makemigrations
 python manage.py migrate
+```
+- Levantar servidor de Django
+```
+python manage.py runserver
 ```
 
 - Crear super-usuario
